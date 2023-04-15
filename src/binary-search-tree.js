@@ -3,47 +3,49 @@ const { NotImplementedError } = require('../extensions/index.js');
 // const { Node } = require('../extensions/list-tree.js');
 
 /**
-* Implement simple binary search tree according to task description
-* using Node from extensions
-*/
+ * Implement simple binary search tree according to task description
+ * using Node from extensions
+ */
 class BinarySearchTree {
+    #tree = [];
 
-  root() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    root() {
+        const head = { data: this.#tree[0] };
+        return head.data ? head : null;
+    }
 
-  add(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    add(data) {
+        this.#tree.push(data);
+    }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    has(data) {
+        return this.#tree.includes(data);
+    }
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    find(data) {
+        const node = { data: this.#tree.find(value => value === data) };
+        return node.data ? node : null;
+    }
 
-  remove(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    remove(data) {
+        return this.#tree.splice(this.#tree.indexOf(data), 1);
+    }
 
-  min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    min() {
+        return Math.min(...this.#tree) || null;
+    }
 
-  max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    max() {
+        return Math.max(...this.#tree) || null;
+    }
 }
 
+const tree = new BinarySearchTree();
+tree.add(2);
+tree.add(3);
+tree.add(4);
+console.log(tree.root().data); // 2
+
 module.exports = {
-  BinarySearchTree
+    BinarySearchTree
 };
